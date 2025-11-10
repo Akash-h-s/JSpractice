@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <h1 id="message">Javascript DOM</h1>
+        <input type="radio" name="language" value="JS">
+         <input type="radio" name="language" value="Python">
+         <p>everyone are looking for the job</p>
+         <div class="par">
+            <h1>Akash</h1>
+            <button>submit</button>
+         </div>
+    </div>
+    <div class="title">
+        <h1>hello 1</h1>
+         <h1 class="second">hello 1</h1>
+         <h1>hello 3</h1>
+         <h1>hello 4</h1>
+    </div>
+    <ul id="menu">
+        <li>Menu</li>
+        <li>Blog</li>
+        <li>Project</li>
+        <li>About</li>
+    </ul>
+    <script>
+        let btn=document.getElementsByName('language')//it will collect the element by the name and we can change useing a ids
+        console.log(btn)
+       let msg=document.getElementById("message")//it will get the element by the id specifies in the HTML tags
+       console.log(msg)
+       msg.innerText="Hi I am Akash"
+       let tag=document.getElementsByTagName("p")//get the element by the tag names
+       console.log(tag)
+       let cl=document.getElementsByClassName("par")
+       console.log(cl)
+
+       let query=document.querySelector(".message")//it will selects only the first matchingelements as we use the format in css
+        
+       console.log(query)
+       let quers=document.querySelectorAll("#message")
+       console.log(quers)
+
+       //to get the parent node form the child
+        let child=document.querySelector("#message")
+        console.log(child.parentNode)
+       
+        //to get the child elemets
+        let parent=document.querySelector('.parent')
+        console.log(parent.firstChild)//to get the first child
+        console.log(parent.lastChild)//to get the last child
+        console.log(parent.firstElementChild)//to get the first element of a child 
+         console.log(parent.childNodes)//to get all  child
+
+         //to get previous siblings and next siblings
+         let second=document.querySelector(".second")
+         console.log(second.nextElementSibling)
+         console.log(second.previousElementSibling)
+    
+
+
+
+         //MAnupulate HTML elements
+        //creating elements in js
+         let div=document.createElement("div")
+         div.innerHTML="<h1>hello welocme to web</h1>"
+        // to add id
+        div.id="created"
+         //to add to our web page
+         //appendchild() method to add a node to the end of the list of child nodes of a specified parent node
+    
+         document.body.appendChild(div)
+         console.log(div)
+
+         let menu=document.getElementById("menu")
+         console.log(menu)
+         let list=document.createElement("li")
+         list.innerHTML="contact"
+         menu.appendChild(list)
+         console.log(menu)
+        
+
+         //to get only the tex content
+         console.log(menu.textContent)
+         // remove entire thing and add text contennt
+        //  menu.textContent="hello"
+
+         //innerHTML is used to add the things
+        //  menu.innerHTML="<h1>hello</h1>"
+         
+       let newli=document.createElement("li")
+       newli.innerHTML="newline"
+        //after( method we can able insert one or more nodes after the elemnt)
+       menu.after(newli)
+
+
+        //append methiod is used to append the elemnts
+        menu.append(newli,list)
+
+        //prepend method add the node as a first child to a particular parent node
+        menu.prepend(list,newli)
+
+        //insertAdjacentHTML is used to insert element in different position like before begin, afterbegin, befor end and after end
+        menu.insertAdjacentHTML("afterbegin","<h3>hello everyone</h3>")
+
+        //replacechild method is used to replace the child element with new element
+        let rep=document.createElement("li")
+        rep.innerHTML="Recipes"
+        menu.replaceChild(rep,list)//syntax first newchild followed by oldchild
+        
+
+        //cloning rthe nodes using cloneNode() method
+        let newNode=menu.cloneNode(true);//if u gave true then all other child elements also copied if not only that element is copied
+        console.log(newNode)
+        document.body.appendChild(newNode)
+        
+        newNode.append(list)
+
+        //to remove the child we will use removeChild() method
+
+        menu.removeChild(newli)
+        //insert before method is used to insert before the element
+        menu.insertBefore(list,menu.lastChild)
+
+    </script>
+</body>
+</html>

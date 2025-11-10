@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    input{
+        background-color: aqua;
+        height:200px;
+        width:100px
+    }
+</style>
+</head>
+
+<body>
+    <div id="menu">
+        <input type="text" id="username" placeholder="username">
+
+    </div>
+    <div id="tit" class="msg when">
+        <h2>welcome to Talview</h2>
+    </div>
+    <script>
+       let inputbox=document.getElementById('username')
+    //    console.log(inputbox.attributes)//gives the all the attributes of input box
+
+       console.log(inputbox.getAttribute("placeholder"))
+       //setattributes() method  used to set the aattributes
+       inputbox.setAttribute("class","user")
+       console.log(inputbox)
+
+       //hasAttribute method is used to check wheater the attribute iss available or not output is boolean
+       console.log(inputbox.hasAttribute("class"))
+
+       //remove attributes is used to remove the attributes frrom the element
+       inputbox.removeAttribute("class")
+       console.log(inputbox)
+
+
+       //manupulating the style property
+    //    inputbox.style.backgroundColor="green"
+    //    inputbox.style.height="40vh"
+    //    console.log(inputbox.style)
+
+       //differnt way to add css it will remove all the properties 
+    //    inputbox.style.cssText="width:300vh"
+        
+       //to resolve that add concatination
+       inputbox.style.cssText+="width:50vw"
+
+
+       //if the css properties are in external file or if it is not in inline we will use an get computedstyle() method int is in window object
+    // window.getComputedStyle(element,pseudoElement)
+      console.log(window.getComputedStyle(inputbox))
+
+
+      //className property
+
+      let dv=document.getElementById("tit")
+      
+      console.log(dv.className)
+      dv.className+=" new"
+       console.log(dv.className)
+      
+       //classList writtens the collection of css classes
+        console.log(dv.classList)
+        dv.classList.remove("new")//to remove
+        dv.classList.add("msg2")
+        dv.classList.replace("msg2","newww")
+        dv.classList.toggle("message")//if class name is not present then it will add that class if not it will remove
+        console.log(dv.classList.contains("when"))
+        console.log(dv)
+
+    </script>
+</body>
+</html>

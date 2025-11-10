@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSEVENTS</title>
+</head>
+<body>
+    <div id="container">
+        <button id="btn" type="button" >click here</button>
+    </div>
+</body>
+<script>
+    //event bubling:events starts at most specific element and flows towards least specific element
+    //event capturing :it is a vice versa of event bubling
+
+    //event handlers/event listner are the peace of code that will be executed when the event occurs
+     let btn=document.getElementById("btn")
+    // btn.onclick=function(){
+    //     btn.style.backgroundColor="red"
+    // }
+   
+
+    //addeventlistner and removeeventlistener are alo used to handle the events
+    //addEventListener(onclick,functionname)
+    function change(){
+        alert("button clicked akaash")
+    }
+    btn.addEventListener('click',change)
+
+    //removeeventlistener removes the event 
+    btn.removeEventListener('click',change)
+    //mousemove event fires repeately ehen u move the mouse
+    //mousedown event fires when u press the mouse button on the element
+    //mouseup event fires when u release the mouse button on
+    //mouseover event fires when the moves move outside fto inside boundries of the element
+    //mouseout
+    //keydown event fires when u press a key on the keyboard & fires repeattly while youre holfing
+    //keyup when u release the key
+    //keypress fires when u type a code
+    //scroll
+</script>
+</html>
