@@ -1,33 +1,4 @@
-function doStep1(init, callback) {
-  const result = init + 1;
-  callback(result);
-}
-
-function doStep2(init, callback) {
-  const result = init + 2;
-  callback(result);
-}
-
-function doStep3(init, callback) {
-  const result = init + 3;
-  callback(result);
-}
-
-function doOperation() {
-  doStep1(0, (result1) => {
-    doStep2(result1, (result2) => {
-      doStep3(result2, (result3) => {
-        console.log(`result: ${result3}`);
-      });
-    });
-  });
-}
-
-
-
-setTimeout(()=>{
-    doOperation();
-    console.log("function with settimeout")
-},"0.10")
-console.log(100+100)
-console.log("hi iam from talview")
+fetch("https://itunes.apple.com/search?term=arijit+singh&limit=10")
+.then(res=>res.json())
+.then(res=>console.log(res))
+.catch(err=>console.log("404"))

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="enter the music u" id="inp">
+    <button id="btn">submit</button>
+    <script>
+        let btn=document.getElementById("btn")
+        btn.onclick=function(){
+       fetch("https://itunes.apple.com/search?term=arijit+singh&media=music")
+        .then(res=>res.json())
+        .then(data=>{
+           
+            let input=document.getElementById("inp").value.toLowerCase();
+            for(let i in data.results){
+                console.log(data.results[i])
+            if(data.results[i].trackName.toLowerCase()===input)
+        {
+            let add=document.createElement('div')
+            let a=document.createElement('audio')
+             document.body.appendChild(add)
+            add.appendChild(a)
+            a.controls = true
+            a.src=data.results[i].previewUrl 
+
+            let downloadLink = document.createElement('a');
+                    downloadLink.href = data.results[i].previewUrl;
+                    downloadLink.download = data.results[i].trackName + ".m4a";
+                    downloadLink.innerText = "Download Preview";
+                    add.appendChild(downloadLink);
+
+    
+
+        }
+    }
+        })
+        }
+    </script>
+</body>
+
+</html>

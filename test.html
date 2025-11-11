@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Phone + Location</title></head>
+<body>
+  <h2>Enter phone and share location</h2>
+  <form id="form">
+    <label>
+      Phone:
+      <input id="phone" name="phone" placeholder="+91xxxxxxxxxx" required>
+    </label>
+    <button type="submit">Submit & Share Location</button>
+  </form>
+
+  <div id="status"></div>
+  <div id="location"></div>
+
+  <script>
+    const form = document.getElementById('form');
+    const status = document.getElementById('status');
+    const locationDiv = document.getElementById('location');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const phone = document.getElementById('phone').value.trim();
+      // You can validate the phone here or send to server if needed.
+      status.textContent = 'Requesting location permission...';
+
+      if (!navigator.geolocation) {
+        status.textContent = 'Geolocation not supported by this browser.';
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          status.textContent = 'Location received.';
+          locationDiv.innerHTML = `
+            <p>Phone: ${phone}</p>
+            <p>Latitude: ${lat}</p>
+            <p>Longitude: ${lon}</p>
+            <p><a target="_blank" href="https://www.google.com/maps?q=${lat},${lon}">Open in Google Maps</a></p>
+          `;
+          // Optionally send phone + coords to your server:
+          // fetch('/save', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({phone, lat, lon})})
+        },
+        (err) => {
+          status.textContent = 'Location permission denied or error: ' + err.message;
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    });
+  </script>
+</body>
+</html>
